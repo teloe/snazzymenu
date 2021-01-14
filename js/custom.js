@@ -15,7 +15,7 @@
                 breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
                 menuLabel: 'Menu', // label for the mobile nav
                 sticky: false, // makes nav sticky on scroll
-                position: 'static', // 'static', 'top', 'left', 'right' - when set to 'top', this forces the mobile nav to be placed absolutely on the very top of page
+                position: 'left', // 'top', 'left', 'right'
                 homeImage:
                     '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // add a custom logo image that routes to homepage or use default home icon
                 phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
@@ -133,7 +133,12 @@
             });
 
             // Hide all .sub-menus
-            nav.find('> ul .sub-menu').hide();
+            nav.find('> ul .sub-menu')
+                .css({
+                    display: 'flex',
+                    'flex-direction': 'column',
+                })
+                .hide();
 
             // First main nav list item has active class
             nav.find('> ul > li:first-child').addClass('active');
@@ -153,16 +158,14 @@
 
             // Top level nav item click functionality
             nav.find('> ul > li a').on('click', function (e) {
-                if (nav.hasClass('desktop')) {
-                    if ($(this).parent().hasClass('has-sub')) {
-                        e.preventDefault();
-                    }
-                    $(this)
-                        .parent()
-                        .addClass('active')
-                        .siblings()
-                        .removeClass('active');
+                if ($(this).parent().hasClass('has-sub')) {
+                    e.preventDefault();
                 }
+                $(this)
+                    .parent()
+                    .addClass('active')
+                    .siblings()
+                    .removeClass('active');
             });
 
             // adds toggle button to li items that have children
@@ -188,13 +191,13 @@
                 if (browserWidth <= breakpoint) {
                     nav.addClass('mobile');
                     nav.removeClass('desktop');
+                } else {
+                    nav.find('> ul .sub-menu').hide();
                 }
-                nav.find('> ul .sub-menu').hide();
             }
             checkWidth();
 
             $(window).on('resize', checkWidth);
         });
-        // end each
     };
 })(jQuery);
