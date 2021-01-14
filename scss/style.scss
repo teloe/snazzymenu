@@ -323,12 +323,10 @@ body {
                         }
                     }
                     .mega-menu {
-                        // display: none;
                         display: flex!important;
                         flex-direction: row!important;
                         .sub-menu {
                             display: block!important;
-                            // flex-direction: column;
                         }
                         .column-title {
                             animation: fadeIn .4s ease;
