@@ -13,7 +13,6 @@
         const settings = $.extend(
             {
                 breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
-                menuLabel: 'Menu', // label for the mobile nav
                 sticky: false, // makes nav sticky on scroll
                 position: 'left', // 'top', 'left', 'right'
                 homeImage:
@@ -22,8 +21,7 @@
                 phoneLabel: 'Call', // label for the phone button
                 locationBtn: '', // adds a location link to the top of menu - i.e.: "/location/", "http://site.com/contact-us/"
                 locationLabel: 'Location', // label for the location button
-                addImages: true,
-                // mobileMode: false,
+                colClasses: false,
             },
             options
         );
@@ -108,7 +106,7 @@
                 nav.find('.cta').prepend(btn);
             }
 
-            // Open/ close menu functionality
+            // Open/ close menu
             $('.menu-toggle').on('click', function () {
                 $(this).toggleClass('active');
                 nav.find('> ul').toggleClass('open');
@@ -150,7 +148,7 @@
             nav.find('.mega-menu > li').addClass('column-title');
 
             // Add unique class to mega menu columns
-            if (settings.addImages) {
+            if (settings.colClasses) {
                 nav.find('.mega-menu .column-title').each(function (i) {
                     $(this).addClass('column' + '-' + (i + 1));
                 });

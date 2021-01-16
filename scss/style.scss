@@ -76,10 +76,7 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
-    // background-image: linear-gradient( 179.6deg,  rgba(0,19,26,1) -4.9%, rgba(0,77,105,1) 108.4% );
-    // background: rgba(0,0,0,.4);
     position: relative;
-    // height: 100vh;
     width:100%;
     overflow-x: hidden;
     h1 {
@@ -163,7 +160,6 @@ body {
             animation: slideRight .3s ease;
             animation-delay: .2s;
             animation-fill-mode: both;
-            height: 100vh;
         }
         > li {
             > a {
@@ -236,8 +232,10 @@ body {
     // Mobile
     &.mobile {
         &.scroll {
-            height: 100%;
-            overflow-y:scroll;
+            &.fixed {
+                overflow-y: scroll;
+            }
+            height: 100vh;
         }
         .mega-menu {
             padding:0;
@@ -247,16 +245,12 @@ body {
         }
         > ul {
             padding-top: 4rem;
+            padding-bottom: 4rem;
         }
         ul {
             li {
                 &.has-sub {
                     position: relative;
-                    &.open {
-                        // .mega-menu {
-                        //     display: block!important;
-                        // }
-                    }
                     .toggle {
                         position: absolute;
                         width: 40px;
