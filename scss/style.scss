@@ -1,5 +1,6 @@
 @import 'mixins';
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
+@import url(https://use.fontawesome.com/releases/v5.9.0/css/all.css);
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
 
 @keyframes fadeIn {
     0% {
@@ -11,18 +12,18 @@
         visibility:visible;
     }
 }
-@keyframes fadeInUp {
-    0% {
-        opacity:0;
-        visibility:hidden;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity:1;
-        visibility:visible;
-        transform: translateY(0);
-    }
-}
+// @keyframes fadeInUp {
+//     0% {
+//         opacity:0;
+//         visibility:hidden;
+//         transform: translateY(10px);
+//     }
+//     100% {
+//         opacity:1;
+//         visibility:visible;
+//         transform: translateY(0);
+//     }
+// }
 @keyframes slideRight {
     0% {
         opacity:0;
@@ -72,7 +73,7 @@ html {
 }
 
 body {
-    font-family: 'Exo', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
@@ -80,12 +81,27 @@ body {
     width:100%;
     overflow-x: hidden;
     h1 {
-        font-weight: 700;
-        font-size: 3rem;
+        font-weight: 300;
+        font-size: 2.75rem;
         margin-bottom: .5rem;
+        color: #666;
     }
     header {
         margin-bottom: 4rem;
+    }
+    .btn {
+        display:inline-block;
+        font-size: 1.125rem;
+        color: #333;
+        border-radius: 4px;
+        border: solid 1px #333;
+        padding: 1rem 2rem;
+        margin: 2rem 0;
+        transition: all .3s ease;
+        &:hover {
+            background: #333;
+            color: #fff;
+        }
     }
     ul {
         list-style: none;
@@ -107,6 +123,13 @@ body {
         max-width: 1200px;
         margin: 150px auto 0;
         padding: 0 15px;
+        section {
+            &:nth-of-type(2) {
+                p {
+                    font-size: 1.125rem;
+                }
+            }
+        }
     }
 }
 
@@ -269,10 +292,22 @@ body {
                         }
                     }
                 }
+                &.open {
+                    > .toggle {
+                        &::after {
+                            transform: rotate(-135deg);
+                        }
+                    }
+                }
                 a {
                     padding: 15px;
                     text-align: left;
                 }
+            }
+        }
+        .cta {
+            span {
+                display:none;
             }
         }
     }
@@ -333,7 +368,6 @@ body {
         }
         .mega-menu {
             position: absolute;
-            // flex-direction: row!important;
             left:0;
             width: 100%;
             background-color: rgba(0,0,0,.95);
@@ -385,12 +419,6 @@ body {
         .cta {
             display: flex;
             align-items: center;
-            span {
-                display:none;
-                @include bp(tablet) {
-                    display:inline;
-                }
-            }
         }
         a {
             color: #fff;
