@@ -1,6 +1,6 @@
 /**
  * snazzymenu.js
- * Responsive, lightweight, mega menu plugin.
+ * Responsive, lightweight, mega menu plugin
  * Copyright (c) 2021 Tom Eloe - https://teloe.me
  * Released under the MIT license
  */
