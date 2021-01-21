@@ -7,18 +7,13 @@
 Responsive, lightweight, mega menu plugin written in jQuery and SCSS.
 
 Click [here](https://teloe.me/snazzymenu/) to see SnazzyMenu in action.
-- [Installation](#installation)
-    * [CSS](#css)
-    * [JS](#js)
-- [Usage](#usage)
-- [Options](#options)
 
 ## Installation
 
 Download/ Clone this repo and include ```snazzymenu.min.js``` and ```snazzymenu.css```  in your project.
 
 ### CSS
-Include snazzymenu.css
+Include ```snazzymenu.css```
 ```html
 <link rel="stylesheet"  href="PATH_TO/css/snazzymenu.css">
 ```
@@ -28,7 +23,7 @@ or import in your css
 ```
 
 ### JS
-Include snazzymenu.min.js and call ```snazzyMenu()``` to initialize.
+Include ```snazzymenu.min.js``` and call ```snazzyMenu()``` to initialize.
 ```html
 <script type="text/javascript"  src="PATH_TO/js/snazzymenu.min.js"></script>
 <script type="text/javascript">
