@@ -82,7 +82,7 @@ jQuery('.snazzymenu').snazzyMenu({
   breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
   sticky: true, // makes nav sticky on scroll (desktop only)
   position: 'static', // 'static', 'top', 'left', 'right' - when set to 'top', this forces the mobile nav to be placed absolutely on the very top of page
-  homeImage: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // Set a custom image like a logo that routes to homepage
+  homeBtn: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // Set a custom image like a logo that routes to homepage
   phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
   phoneLabel: 'Call Us', // label for the phone button
   locationBtn: '', // adds a location link to the top of menu - i.e.: "/location/", "http://site.com/contact-us/"
@@ -96,7 +96,7 @@ jQuery('.snazzymenu').snazzyMenu({
 | `breakpoint` | *Integer* | 1024 | Number in pixels to determine when the nav should turn mobile friendly |
 | `sticky` | *Boolean* | true | Makes the nav sticky on scroll |
 | `position` | *String* | 'right' | Direction the mobile nav slides in from  |
-| `homeImage` | *String* | '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>' | Set a custom image like a logo that routes to homepage |
+| `homeBtn` | *String* | '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>' | Set a custom image like a logo that routes to homepage |
 | `phoneBtn` | *String* | '' | Adds a click-to-call phone link to the top of menu - i.e.: "18009084500" |
 | `phoneLabel` | *String* | 'Call' | Label (text) for the phone button |
 | `locationBtn` | *String* | '' | Adds a location link to the top of menu - i.e.: "/location/", "http://site.com/contact-us/" |
