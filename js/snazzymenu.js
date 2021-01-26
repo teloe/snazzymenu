@@ -184,13 +184,14 @@
             function checkWidth() {
                 const browserWidth = window.innerWidth;
 
-                nav.removeClass('mobile');
-                nav.addClass('desktop');
                 if (browserWidth <= breakpoint) {
                     nav.addClass('mobile');
                     nav.removeClass('desktop');
                 } else {
+                    nav.removeClass('mobile');
+                    nav.addClass('desktop');
                     nav.find('> ul .sub-menu').hide();
+                    nav.find('.has-sub').removeClass('open');
                 }
             }
             checkWidth();

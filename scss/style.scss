@@ -141,8 +141,20 @@
         }
         .mega-menu {
             padding:0;
+            /* .column-title {
+                > a {
+                    padding-left: 2rem;
+                }
+            } */
             img {
                 display:none !important;
+            }
+            .sub-menu {
+                li {
+                    a {
+                        padding-left: 2rem;
+                    }
+                }
             }
         }
         > ul {
@@ -172,10 +184,19 @@
                     }
                 }
                 &.open {
+                    > a {
+                        text-decoration: underline;
+                        font-weight: 700;
+                    }
                     > .toggle {
                         &::after {
                             transform: rotate(-135deg);
                         }
+                    }
+                }
+                &.column-title {
+                    > a {
+                        font-weight: normal;
                     }
                 }
                 a {
