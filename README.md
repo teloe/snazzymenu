@@ -1,7 +1,3 @@
-<!-- TODO: -->
-<!-- 1. add example for jQuery prepend/ append below section -->
-<!-- 2. add instructions for wrapping li elements -->
-
 # SnazzyMenu.js
 
 Responsive, lightweight, mega menu plugin written in jQuery and SCSS.
@@ -41,8 +37,8 @@ SnazzyMenu is designed to work well with Wordpress sites and can be implemented 
 
 ```html
 <div class="snazzymenu">
-    <ul id="menu-main-nav"  class="menu">
-        <li id="" class="menu-item-has-children"><a href="">Nav Item</a>
+    <ul class="menu">
+        <li class="menu-item-has-children"><a href="">Nav Item</a>
             <ul class="sub-menu">
                 <li class="menu-item-has-children"><a href="">Column Title</a>
                     <ul class="sub-menu">
@@ -73,6 +69,12 @@ You can add custom elements (images, videos, etc.) by setting the ```colClasses`
 ```
 You can then easily target those elements by class name and use jQuery ```prepend()``` or ```append()``` methods to add any element you'd like.
 
+*Example*
+```javascript
+jQuery('.column-1').prepend('<img class="img-resp" src"PATH_TO/images/image1.jpg">');
+jQuery('.column-2').append('<img class="img-resp" src"PATH_TO/images/image2.jpg">');
+```
+
 ## Options
 
 Here's a list of available settings.
@@ -81,8 +83,8 @@ Here's a list of available settings.
 jQuery('.snazzymenu').snazzyMenu({
   breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
   sticky: true, // makes nav sticky on scroll (desktop only)
-  position: 'static', // 'static', 'top', 'left', 'right' - when set to 'top', this forces the mobile nav to be placed absolutely on the very top of page
-  homeBtn: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // Set a custom image like a logo that routes to homepage
+  position: 'right', // direction the mobile nav slides in from 
+  homeBtn: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // set a custom image like a logo that routes to homepage
   phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
   phoneLabel: 'Call Us', // label for the phone button
   locationBtn: '', // adds a location link to the top of menu - i.e.: "/location/", "http://site.com/contact-us/"
