@@ -3,6 +3,10 @@
  * Responsive, lightweight, mega menu plugin
  * Copyright (c) 2021 Tom Eloe - https://teloe.me
  * Released under the MIT license
+ *
+ * TODO: 1. add menuBtn option in case you don't want hamburger menu and to show top-level nav items
+ *       2. remove poition option
+ *       3. change the > ul to .menu
  */
 
 (function ($) {
