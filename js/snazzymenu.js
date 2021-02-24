@@ -4,9 +4,9 @@
  * Copyright (c) 2021 Tom Eloe - https://teloe.me
  * Released under the MIT license
  *
- * TODO: 1. add menuBtn option in case you don't want hamburger menu and to show top-level nav items
- *       2. remove poition option
- *       3. change the > ul to .menu
+ * TODO: 1. menu-btn-hide class >
+ *       2. needs to add active class to close-overlay on click
+ *       3. needs to remove active class close-overlay on window resize (mobile to desktop)
  */
 
 (function ($) {
@@ -18,7 +18,8 @@
             {
                 breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
                 sticky: true, // makes nav sticky on scroll
-                position: 'left', // 'top', 'left', 'right'
+                // position: 'left', // 'top', 'left', 'right'
+                menuBtn: true, // show hamburger menu button/ top level controls/ logo image (top-level menu items will be visible on click)
                 homeBtn:
                     '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // add a custom logo image that routes to homepage or use default home icon
                 phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
@@ -35,12 +36,6 @@
                 breakpoint = settings.breakpoint;
             }
 
-            if (settings.menuLabel) {
-                menuLabel = settings.menuLabel;
-            } else {
-                menuLabel = '';
-            }
-
             // Makes nav sticky on scroll
             if (settings.sticky) {
                 const navPos = nav.offset().top;
@@ -51,9 +46,6 @@
                     }
                 });
             }
-
-            // if (settings.position) {
-            // }
 
             if (settings.homeBtn) {
                 homeBtn = settings.homeBtn;
@@ -74,7 +66,7 @@
             }
 
             // Load .cta/ .controls/ .close-overlay dynamically
-            nav.find('> ul').before(
+            nav.find('.menu').before(
                 '<div class="controls"><div class="logo"><a href="/" title="">' +
                     homeBtn +
                     '</a></div><div class="cta"><button class="menu-toggle"></button></div></div>'
@@ -113,14 +105,14 @@
             // Open/ close menu
             $('.menu-toggle').on('click', function () {
                 $(this).toggleClass('active');
-                nav.find('> ul').toggleClass('open');
+                nav.find('.menu').toggleClass('open');
                 $('.close-overlay').toggleClass('active');
                 nav.toggleClass('scroll');
             });
 
             function closeMenu() {
                 $('.menu-toggle').removeClass('active');
-                nav.find('> ul').removeClass('open');
+                nav.find('.menu').removeClass('open');
                 $('.close-overlay').removeClass('active');
                 nav.removeClass('scroll');
             }
@@ -135,7 +127,7 @@
             });
 
             // Hide all .sub-menus
-            nav.find('> ul .sub-menu')
+            nav.find('.menu .sub-menu')
                 .css({
                     display: 'flex',
                     'flex-direction': 'column',
@@ -143,10 +135,16 @@
                 .hide();
 
             // First main nav list item has active class
-            nav.find('> ul > li:first-child').addClass('active');
+            nav.find('.menu > li:first-child').addClass('active');
+
+            // Removes menu controls and only shows top-level menu items on desktop
+            if (!settings.menuBtn) {
+                nav.addClass('menu-btn-hide');
+                nav.find('.menu > li').removeClass('active');
+            }
 
             // Add .mega-menu class to first sub-menus
-            nav.find('> ul > li.has-sub > .sub-menu').addClass('mega-menu');
+            nav.find('.menu > li.has-sub > .sub-menu').addClass('mega-menu');
 
             // Add .column-title class to first li elements in mega menu
             nav.find('.mega-menu > li').addClass('column-title');
@@ -159,7 +157,7 @@
             }
 
             // Top level nav item click functionality
-            nav.find('> ul > li a').on('click', function (e) {
+            nav.find('.menu > li a').on('click', function (e) {
                 if ($(this).parent().hasClass('has-sub')) {
                     e.preventDefault();
                 }
@@ -170,14 +168,14 @@
                     .removeClass('active');
             });
 
-            // adds toggle button to li items that have children
+            // Adds toggle button to li items that have children
             nav.find('li a').each(function () {
                 if ($(this).parent().hasClass('has-sub')) {
                     $(this).parent().append('<a class="toggle" href="#"></a>');
                 }
             });
 
-            // expands the dropdown menu on each click
+            // Expands the dropdown menu on each click
             nav.find('li .toggle').on('click', function (e) {
                 e.preventDefault();
                 $(this).siblings('.sub-menu').slideToggle(250);
@@ -194,7 +192,7 @@
                 } else {
                     nav.removeClass('mobile');
                     nav.addClass('desktop');
-                    nav.find('> ul .sub-menu').hide();
+                    nav.find('.menu .sub-menu').hide();
                     nav.find('.has-sub').removeClass('open');
                 }
             }

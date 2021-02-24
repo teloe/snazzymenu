@@ -53,7 +53,7 @@
             }
         }
     }
-    > ul {
+    .menu {
         display:none;
         position: absolute;
         width: 100%;
@@ -157,7 +157,7 @@
                 }
             }
         }
-        > ul {
+        .menu {
             padding-top: 4rem;
             padding-bottom: 4rem;
         }
@@ -214,7 +214,18 @@
 
     // Desktop
     &.desktop {
-        > ul {
+        &.menu-btn-hide {
+            .controls {
+                display: none;
+            }
+            .menu {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                height: auto;
+            }   
+        }
+        .menu {
             background: rgba(0,0,0,.95);
             &.open {
                 flex-direction: row;

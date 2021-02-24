@@ -13,10 +13,6 @@ Include ```snazzymenu.css```
 ```html
 <link rel="stylesheet"  href="PATH_TO/css/snazzymenu.css">
 ```
-or import in your css
-```css
-@import url('https://github.com/teloe/snazzymenu/blob/main/css/style.css')
-```
 
 ### JS
 Include ```snazzymenu.min.js``` and call ```snazzyMenu()``` to initialize.
@@ -71,7 +67,9 @@ You can then easily target those elements by class name and use jQuery ```prepen
 
 *Example*
 ```javascript
+// Add an image before (above) the nav items
 jQuery('.column-1').prepend('<img class="img-resp" src"PATH_TO/images/image1.jpg">');
+// Add an image after (below) the nav items
 jQuery('.column-2').append('<img class="img-resp" src"PATH_TO/images/image2.jpg">');
 ```
 
@@ -81,15 +79,16 @@ Here's a list of available settings.
 
 ```javascript
 jQuery('.snazzymenu').snazzyMenu({
-  breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
-  sticky: true, // makes nav sticky on scroll (desktop only)
-  position: 'right', // direction the mobile nav slides in from 
-  homeBtn: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // set a custom image like a logo that routes to homepage
-  phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
-  phoneLabel: 'Call Us', // label for the phone button
-  locationBtn: '', // adds a location link to the top of menu - i.e.: "/location/", "http://site.com/contact-us/"
-  locationLabel: 'Location', // label for the location button
-  colClasses: false // fixes horizontal scrollbar issue on very long navs
+    breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
+    sticky: true, // makes nav sticky on scroll (desktop only)
+    //   position: 'right', // direction the mobile nav slides in from 
+    menuBtn: true, // show hamburger menu button/ top level controls/ logo image (top-level menu items will be visible on click)
+    homeBtn: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // set a custom image like a logo that routes to homepage
+    phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
+    phoneLabel: 'Call Us', // label for the phone button
+    locationBtn: '', // adds a location link to the top of menu - i.e.: "/location/", "http://site.com/contact-us/"
+    locationLabel: 'Location', // label for the location button
+    colClasses: false // fixes horizontal scrollbar issue on very long navs
 });
 ```
 
@@ -97,7 +96,8 @@ jQuery('.snazzymenu').snazzyMenu({
 | --- | --- | --- | --- |
 | `breakpoint` | *Integer* | 1024 | Number in pixels to determine when the nav should turn mobile friendly |
 | `sticky` | *Boolean* | true | Makes the nav sticky on scroll |
-| `position` | *String* | 'right' | Direction the mobile nav slides in from  |
+<!-- | `position` | *String* | 'right' | Direction the mobile nav slides in from  | -->
+| `menuBtn` | *Boolean* | true | show hamburger menu button/ top level controls/ logo image (top-level menu items will be visible on click) |
 | `homeBtn` | *String* | '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>' | Set a custom image like a logo that routes to homepage |
 | `phoneBtn` | *String* | '' | Adds a click-to-call phone link to the top of menu - i.e.: "18009084500" |
 | `phoneLabel` | *String* | 'Call' | Label (text) for the phone button |
