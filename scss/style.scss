@@ -60,7 +60,7 @@
         &.open {
             display:flex;
             flex-direction: column;
-            animation: slideRight .3s ease;
+            animation: slideRight .25s ease;
             animation-delay: .2s;
             animation-fill-mode: both;
         }
@@ -85,7 +85,7 @@
     $buttonHeight: 24px;
     $buttonColor: darken(#fff, 10%);
     $lineThickness: 3px;
-    $transitionSpeed: .25s;
+    $transitionSpeed: .2s;
     $transitionEasing: ease-in-out;
 
     .menu-toggle {
@@ -141,11 +141,6 @@
         }
         .mega-menu {
             padding:0;
-            /* .column-title {
-                > a {
-                    padding-left: 2rem;
-                }
-            } */
             img {
                 display:none !important;
             }
@@ -234,6 +229,28 @@
                 animation: fadeIn .3s ease;
                 animation-delay: .1s;
                 animation-fill-mode: both;
+                > li {
+                    &.active {
+                        > a {
+                            color:rgba(#fff,.6);
+                            &::after {
+                                border-color: rgba(#fff,.6);
+                            }
+                        }
+                        .mega-menu {
+                            display: flex!important;
+                            flex-direction: row!important;
+                            .sub-menu {
+                                display: block!important;
+                            }
+                            .column-title {
+                                animation: fadeIn .4s ease;
+                                animation-delay: .1s;
+                                animation-fill-mode: both;
+                            }
+                        }
+                    }
+                }
             }
             > li {
                 &.has-sub {
@@ -253,26 +270,6 @@
                     }
                     .toggle {
                         display: none;
-                    }
-                }
-                &.active {
-                    > a {
-                        color:rgba(#fff,.6);
-                        &::after {
-                            border-color: rgba(#fff,.6);
-                        }
-                    }
-                    .mega-menu {
-                        display: flex!important;
-                        flex-direction: row!important;
-                        .sub-menu {
-                            display: block!important;
-                        }
-                        .column-title {
-                            animation: fadeIn .4s ease;
-                            animation-delay: .1s;
-                            animation-fill-mode: both;
-                        }
                     }
                 }
             }
