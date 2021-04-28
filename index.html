@@ -286,7 +286,7 @@
         </section>
 
         <section>
-            <p style="margin-top:4rem;text-align:center;">&copy; 2021 Tom Eloe. All Rights Reserved.</p>
+            <p id="copyright">&copy; <span id="year"></span> Tom Eloe. All Rights Reserved.</p>
         </section>
         
     </div>
@@ -298,7 +298,8 @@
             // SnazzyMenu initialize
 			jQuery('.snazzymenu').snazzyMenu({
                 // homeBtn: '<img class="img-resp" src="images/logo1.png">',
-                menuBtn: false,
+                toggleBtn: 'plus',
+                // menuBtn: false,
                 sticky: true,
                 phoneBtn: '888-888-8888',
                 phoneLabel: '888-888-8888',
@@ -327,6 +328,10 @@
             jQuery('.column-title img').addClass('img-resp');
 		});
 	</script>
+
+    <script>
+        jQuery('#year').text(new Date().getFullYear());
+    </script>
 
 </body>
 </html>

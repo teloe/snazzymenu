@@ -16,6 +16,11 @@
     100%{opacity:1;visibility:visible;transform:translateX(0)}
 }
 
+#copyright {
+    margin: 4rem 0;
+    text-align: center;
+}
+
 // Close overlay
 .close-overlay {
     position:fixed;
@@ -60,7 +65,7 @@
         &.open {
             display:flex;
             flex-direction: column;
-            animation: slideRight .25s ease;
+            animation: slideRight .2s ease;
             animation-delay: .2s;
             animation-fill-mode: both;
         }
@@ -144,10 +149,17 @@
             img {
                 display:none !important;
             }
+        }
+        .sub-menu {
+            li {
+                a {
+                    padding-left: 1.5rem;
+                }
+            }
             .sub-menu {
                 li {
                     a {
-                        padding-left: 2rem;
+                        padding-left: 3rem;
                     }
                 }
             }
@@ -155,6 +167,49 @@
         .menu {
             padding-top: 4rem;
             padding-bottom: 4rem;
+            &.caret {
+                li {
+                    &.has-sub {
+                        .toggle {
+                            &::after {
+                                content: '';
+                                border-right: solid 1px #fff;
+                                border-bottom: solid 1px #fff;
+                                display:inline-block;
+                                width: 10px;
+                                height: 10px;
+                                right: 5px;
+                                position: relative;
+                                transform: rotate(45deg);
+                            }
+                        }
+                    }
+                }
+            }
+            &.plus {
+                li {
+                    &.has-sub {
+                        .toggle {
+                            height: 50px;
+                            &::after {
+                                content: '';
+                                background: linear-gradient(#fff,#fff), linear-gradient(#fff,#fff);
+                                background-position:center;
+                                background-size: 50% 2px,2px 50%;
+                                background-repeat:no-repeat;
+                                display:inline-block;
+                                width: 28px;
+                                height: 28px;
+                                position: absolute;
+                                top:0;
+                                bottom:0;
+                                margin: auto;
+                                right: 15px;
+                            }
+                        }
+                    }
+                }
+            }
         }
         ul {
             li {
@@ -166,16 +221,9 @@
                         top: 0;
                         right: 0;
                         margin-bottom: 0;
-                        &::after {
-                            content: '';
-                            border-right: solid 1px #fff;
-                            border-bottom: solid 1px #fff;
-                            display:inline-block;
-                            width: 10px;
-                            height: 10px;
-                            position: relative;
-                            transform: rotate(45deg);
-                        }
+                        // in case you want to be able to click entire li.has-sub > a row to initiate dropdown
+                        width: 100%;
+                        text-align: right;
                     }
                 }
                 &.open {
@@ -185,7 +233,15 @@
                     }
                     > .toggle {
                         &::after {
-                            transform: rotate(-135deg);
+                            transform: rotate(-135deg)!important;
+                        }
+                    }
+                    li {
+                        &.open {
+                            > a {
+                                text-decoration: none;
+                                // text-transform:none;
+                            }
                         }
                     }
                 }
@@ -344,3 +400,4 @@
     }
 
 }
+
