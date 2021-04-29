@@ -19,7 +19,7 @@
                 breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
                 sticky: true, // makes nav sticky on scroll
                 menuBtn: true, // show hamburger menu button/ top level controls/ logo image (top-level menu items will be visible on click)
-                toggleBtn: 'caret', // options: 'caret' or 'plus'. Make the .toggle dropdown icons either a caret or a plus sign for mobile
+                toggleBtn: 'caret', // options: 'caret' or 'plus'. Make the .toggle dropdown icons either a caret or a plus sign for mobile viewports
                 homeBtn:
                     '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // add a custom logo image that routes to homepage or use default home icon
                 phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
