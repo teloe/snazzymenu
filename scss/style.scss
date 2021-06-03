@@ -1,3 +1,12 @@
+// Menu Toggle Variables
+$buttonWidth: 30px;
+$buttonHeight: 24px;
+$buttonColorDark: #fff;
+$buttonColorLight: #000;
+$lineThickness: 3px;
+$transitionSpeed: .2s;
+$transitionEasing: ease-in-out;
+
 @keyframes fadeIn {
     0%{opacity:0;visibility:hidden}
     100%{opacity:1;visibility:visible}
@@ -43,16 +52,174 @@
 
 // SnazzyMenu
 .snazzymenu {
-    background: rgba(0,0,0,.95);
     position: absolute;
     width: 100%;
     z-index: 999;
+
+    // Dark theme
+    &.dark {
+        background: rgba(0,0,0,.95);
+        ul {
+            li {
+                a {
+                    color: #fff;
+                }
+            }
+        }
+        .menu-toggle {
+            color: $buttonColorDark;
+        }
+        &.mobile {
+            .menu {
+                &.caret {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    border-right: solid 1px #fff;
+                                    border-bottom: solid 1px #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.plus {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    background: linear-gradient(#fff,#fff), linear-gradient(#fff,#fff);
+                                    background-position:center;
+                                    background-size: 50% 2px,2px 50%;
+                                    background-repeat:no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.desktop {
+            .menu {
+                background: rgba(0,0,0,.95);
+                &.open {
+                    > li {
+                        &.active {
+                            > a {
+                                color:rgba(#fff,.6);
+                                &::after {
+                                    border-color: rgba(#fff,.6);
+                                }
+                            }
+                        }
+                    }
+                }
+                > li {
+                    &.has-sub {
+                        > a {
+                            &::after {
+                                border-right: solid 1px #fff;
+                                border-bottom: solid 1px #fff;
+                            }
+                        }
+                    }
+                }
+                .mega-menu {
+                    background-color: rgba(0,0,0,.95);
+                }
+            }
+        }
+        .controls {
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    // Light theme
+    &.light {
+        background: rgba(255,255,255,.95);
+        ul {
+            li {
+                a {
+                    color: #000;
+                }
+            }
+        }
+        .menu-toggle {
+            color: $buttonColorLight;
+        }
+        &.mobile {
+            .menu {
+                &.caret {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    border-right: solid 1px #000;
+                                    border-bottom: solid 1px #000;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.plus {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    background: linear-gradient(#000,#000), linear-gradient(#000,#000);
+                                    background-position:center;
+                                    background-size: 50% 2px,2px 50%;
+                                    background-repeat:no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.desktop {
+            .menu {
+                background: rgba(255,255,255,.95);
+                &.open {
+                    > li {
+                        &.active {
+                            > a {
+                                color:rgba(#000,.6);
+                                &::after {
+                                    border-color: rgba(#000,.6);
+                                }
+                            }
+                        }
+                    }
+                }
+                > li {
+                    &.has-sub {
+                        > a {
+                            &::after {
+                                border-right: solid 1px #000;
+                                border-bottom: solid 1px #000;
+                            }
+                        }
+                    }
+                }
+                .mega-menu {
+                    background: rgba(255,255,255,.95);
+                }
+            }
+        }
+        .controls {
+            a {
+                color: #000;
+            }
+        }
+    }
 
     // General
     ul {
         li {
             a {
-                color: #fff;
                 display:inline-block;
                 padding: 5px;
             }
@@ -85,14 +252,6 @@
         }
     }
 
-    // Menu Toggle
-    $buttonWidth: 30px;
-    $buttonHeight: 24px;
-    $buttonColor: darken(#fff, 10%);
-    $lineThickness: 3px;
-    $transitionSpeed: .2s;
-    $transitionEasing: ease-in-out;
-
     .menu-toggle {
         cursor:pointer;
         position: relative;
@@ -105,7 +264,6 @@
         background: transparent;
         border-top: $lineThickness solid;
         border-bottom: $lineThickness solid;
-        color: $buttonColor;
         font-size: 0;
         transition: all $transitionSpeed $transitionEasing;
         &:before,
@@ -122,9 +280,9 @@
             background: currentColor;
             transition: transform $transitionSpeed $transitionEasing;
         } 
-        &:hover {
-            color: lighten($buttonColor, 10%);
-        }
+        // &:hover {
+            // color: lighten($buttonColor, 10%);
+        // }
         &.active {
             border-color: transparent;
             &:before {
@@ -173,8 +331,6 @@
                         .toggle {
                             &::after {
                                 content: '';
-                                border-right: solid 1px #fff;
-                                border-bottom: solid 1px #fff;
                                 display:inline-block;
                                 width: 10px;
                                 height: 10px;
@@ -193,10 +349,6 @@
                             height: 50px;
                             &::after {
                                 content: '';
-                                background: linear-gradient(#fff,#fff), linear-gradient(#fff,#fff);
-                                background-position:center;
-                                background-size: 50% 2px,2px 50%;
-                                background-repeat:no-repeat;
                                 display:inline-block;
                                 width: 28px;
                                 height: 28px;
@@ -277,7 +429,6 @@
             }   
         }
         .menu {
-            background: rgba(0,0,0,.95);
             &.open {
                 flex-direction: row;
                 justify-content: space-evenly;
@@ -287,12 +438,6 @@
                 animation-fill-mode: both;
                 > li {
                     &.active {
-                        > a {
-                            color:rgba(#fff,.6);
-                            &::after {
-                                border-color: rgba(#fff,.6);
-                            }
-                        }
                         .mega-menu {
                             display: flex!important;
                             flex-direction: row!important;
@@ -313,8 +458,6 @@
                     > a {
                         &::after {
                             content: '';
-                            border-right: solid 1px #fff;
-                            border-bottom: solid 1px #fff;
                             display:inline-block;
                             width: 8px;
                             height: 8px;
@@ -334,7 +477,6 @@
             position: absolute;
             left:0;
             width: 100%;
-            background-color: rgba(0,0,0,.95);
             padding: 2rem 1rem;
             justify-content: center;
             > li {
@@ -385,7 +527,6 @@
             align-items: center;
         }
         a {
-            color: #fff;
             display:flex;
             align-items: center;
             justify-content: center;

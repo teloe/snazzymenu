@@ -6,7 +6,7 @@
  *
  * TODO: 1. menu-btn-hide class >
  *          1a. .close-overlay remove active class on window resize at breakpoint (reset)
- *       2. add styles for light/dark theme
+ *       2. update README.md documentation
  */
 
 (function ($) {
@@ -16,7 +16,7 @@
         // Default settings
         const settings = $.extend(
             {
-                theme: 'dark', // adds default color to nav. (light, dark)
+                theme: 'dark', // adds default color to nav (light, dark)
                 breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
                 sticky: true, // makes nav sticky on scroll
                 menuBtn: true, // show hamburger menu button/ top level controls/ logo image (top-level menu items will be visible on click)
@@ -34,7 +34,7 @@
 
         return this.each(function () {
             // defines dark or light themes
-            if (settings.theme == 'light' || settings.theme == 'dark') {
+            if (settings.theme === 'light' || settings.theme) {
                 nav.addClass(settings.theme);
             }
 
