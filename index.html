@@ -7,14 +7,9 @@
     <title>SnazzyMenu - Responsive, Mega Menu Navigation</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="dist/css/style.css">
 
-    <!-- 
-    include snazzymenu.css in your project
-    <link rel="stylesheet" href="./css/snazzymenu.css"> 
-    -->
-
-    <!-- styles for this sample page only -->
+    <!-- Styles for this sample page only -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <style>
@@ -292,12 +287,12 @@
     </div>
 
 
-    <script type="text/javascript" src="js/snazzymenu.js"></script>
+    <script type="text/javascript" src="dist/js/snazzymenu-min.js"></script>
     <script type="text/javascript">
 		jQuery(document).ready(function($) {
             // SnazzyMenu initialize
 			jQuery('.snazzymenu').snazzyMenu({
-                // homeBtn: '<img class="img-resp" src="images/logo1.png">',
+                // homeBtn: '<img class="img-resp" src="app/images/logo1.png">',
                 // toggleBtn: 'plus',
                 // menuBtn: false,
                 sticky: true,
@@ -310,21 +305,21 @@
             });
             
             // Add custom images
-            jQuery('.column-1').prepend('<img src="images/placeimg_400_250_tech.jpg">');
-            jQuery('.column-2').prepend('<img src="images/placeimg_400_250_nature.jpg">');
-            jQuery('.column-3').prepend('<img src="images/placeimg_400_250_arch(1).jpg">');
-            jQuery('.column-4').prepend('<img src="images/placeimg_400_250_tech(1).jpg">');
-            jQuery('.column-5').prepend('<img src="images/placeimg_400_250_tech(3).jpg">');
-            jQuery('.column-6').prepend('<img src="images/placeimg_400_250_tech(4).jpg">');
-            jQuery('.column-7').prepend('<img src="images/placeimg_400_250_nature(1).jpg">');
-            jQuery('.column-8').prepend('<img src="images/placeimg_400_250_nature(2).jpg">');
-            jQuery('.column-9').prepend('<img src="images/placeimg_400_250_nature(3).jpg">');
-            jQuery('.column-10').prepend('<img src="images/placeimg_400_250_nature(4).jpg">');
-            jQuery('.column-11').prepend('<img src="images/placeimg_400_250_tech(1).jpg">');
-            jQuery('.column-12').prepend('<img src="images/placeimg_400_250_nature(2).jpg">');
-            jQuery('.column-13').append('<img src="images/placeimg_400_250_nature(3).jpg">');
-            jQuery('.column-14').append('<img src="images/placeimg_400_250_nature(5).jpg">');
-            jQuery('.column-15').append('<img src="images/placeimg_400_250_arch(1).jpg">');
+            jQuery('.column-1').prepend('<img src="app/images/placeimg_400_250_tech.jpg">');
+            jQuery('.column-2').prepend('<img src="app/images/placeimg_400_250_nature.jpg">');
+            jQuery('.column-3').prepend('<img src="app/images/placeimg_400_250_arch(1).jpg">');
+            jQuery('.column-4').prepend('<img src="app/images/placeimg_400_250_tech(1).jpg">');
+            jQuery('.column-5').prepend('<img src="app/images/placeimg_400_250_tech(3).jpg">');
+            jQuery('.column-6').prepend('<img src="app/images/placeimg_400_250_tech(4).jpg">');
+            jQuery('.column-7').prepend('<img src="app/images/placeimg_400_250_nature(1).jpg">');
+            jQuery('.column-8').prepend('<img src="app/images/placeimg_400_250_nature(2).jpg">');
+            jQuery('.column-9').prepend('<img src="app/images/placeimg_400_250_nature(3).jpg">');
+            jQuery('.column-10').prepend('<img src="app/images/placeimg_400_250_nature(4).jpg">');
+            jQuery('.column-11').prepend('<img src="app/images/placeimg_400_250_tech(1).jpg">');
+            jQuery('.column-12').prepend('<img src="app/images/placeimg_400_250_nature(2).jpg">');
+            jQuery('.column-13').append('<img src="app/images/placeimg_400_250_nature(3).jpg">');
+            jQuery('.column-14').append('<img src="app/images/placeimg_400_250_nature(5).jpg">');
+            jQuery('.column-15').append('<img src="app/images/placeimg_400_250_arch(1).jpg">');
             // Add image responsive class
             jQuery('.column-title img').addClass('img-resp');
 		});

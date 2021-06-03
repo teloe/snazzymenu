@@ -35,13 +35,13 @@ function minifyjs() {
 function watch() {
     browserSync.init({
         server: {
-            baseDir: './app',
+            baseDir: '.',
             index: '/index.html',
         },
     });
     gulp.watch('app/scss/**/*.scss', style);
     gulp.watch('app/js/**/*.js', minifyjs);
-    gulp.watch('app/*.html').on('change', browserSync.reload);
+    gulp.watch('./*.html').on('change', browserSync.reload);
     gulp.watch('app/js/**/*.js').on('change', browserSync.reload);
 }
 
