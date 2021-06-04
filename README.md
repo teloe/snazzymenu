@@ -112,42 +112,32 @@ jQuery('.snazzymenu').snazzyMenu({
 | `locationLabel` | *String* | 'Location' | Label (text) for the location button |
 | `colClasses` | *Boolean* | false | Adds unique class names to each list item (column) in the mega menu in the order in which they appear |
 
----
 #### theme
 By default, the theme for snazzyMenu is set to ```'dark'```. You may change the value of this option to ```'light'```. This will change the background color from black to white.
 
----
 #### breakpoint
 Define the number in pixels you would like to have snazzyMenu change from mobile to desktop version.
 
----
 #### menuBtn
 WORK IN PROGRESS - Setting this option value to false will remove the menu controls and show the top level menu items on desktop view only.
 
----
 #### toggleBtn
 For mobile viewports, there are dropdown icons to toggle sub-menus. By default, these icons are carets. You can change this option to ```'plus'``` if you'd prefer these icons to be plus signs.
 
----
 #### homeBtn
 By default, a home icon svg will display on the left hand side of the menu. Add your logo or other image with the correct path to your image. 
 
----
 #### phoneBtn
 Add a phone number to your menu that users can click to call.
 
----
 #### phoneLabel
 The default lable is 'Call'. You can include your full phone number by adding the string value.
 
----
 #### locationBtn
 Add a location link to your menu that users can click to open a new tab with your location.
 
----
 #### locationLabel
 The default lable is 'Location'. You can dislplay your full address by adding the string value.
 
----
 #### ColClasses
 By default, this is set to ```false```. If you set to ```true```, the ```li``` elements will have unique class names that you can target.
