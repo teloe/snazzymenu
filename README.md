@@ -119,7 +119,7 @@ By default, the theme for snazzyMenu is set to ```'dark'```. You may change the 
 Define the number in pixels you would like to have snazzyMenu change from mobile to desktop version.
 
 #### menuBtn
-WORK IN PROGRESS - Setting this option value to false will remove the menu controls and show the top level menu items on desktop view only.
+WORK IN PROGRESS - Setting this option value to ```false``` will remove the menu controls (logo, phone, location, and hamburger buttons) and show the top level menu items on desktop view only, making it look more like a traditional nav.
 
 #### toggleBtn
 For mobile viewports, there are dropdown icons to toggle sub-menus. By default, these icons are carets. You can change this option to ```'plus'``` if you'd prefer these icons to be plus signs.
