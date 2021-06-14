@@ -6,7 +6,7 @@ Click [here](https://teloe.me/snazzymenu/) to see SnazzyMenu in action.
 
 ## Installation
 
-Download/clone this repo and include the files located in the ```dist``` directory to your project:<br>
+Download/clone this repo and include the files located in the ```dist``` directory in your project:<br>
 ```dist/js/snazzymenu.min.js ```
 and 
 ```dist/css/style.css```
