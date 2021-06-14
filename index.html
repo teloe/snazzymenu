@@ -10,24 +10,25 @@
     <link rel="stylesheet" href="dist/css/style.css">
 
     <!-- Styles for this sample page only -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <style>
         html{box-sizing:border-box;margin:0}
         *,::before,::after{box-sizing:inherit}
-        body{font-family:'Exo 2',sans-serif;margin:0;padding:0;color:#111;background:#ebebeb;position:relative;width:100%;overflow-x:hidden}
-        h1{font-weight:300;font-size:2.75rem;margin-bottom:.5rem;color:#111}
-        p{line-height: 1.75}
-        header{margin-bottom:3rem}
+        body{font-family:'Recursive',sans-serif;margin:0;padding:0;color:#222;background:#ebebeb;position:relative;width:100%;overflow-x:hidden}
+        h1{font-size:2.75rem;margin:0 0 .5rem;color:#222}
+        p{line-height: 1.75;margin:0}
+        header{margin-bottom:3rem;padding:3rem 15px 0}
         header p{font-size:1.125rem}
-        .btn{display:inline-block;font-size:1.125rem;color:#111;border-radius:4px;border:solid 1px #111;padding:1rem 2rem;margin:2rem 0;transition:all .3s ease}
-        .btn:hover{background:#111;color:#fff}
+        .btn{display:inline-block;font-size:1.125rem;color:#222;border-radius:4px;border:solid 1px #222;padding:1rem 2rem;margin-top:2rem;transition:all .3s ease}
+        .btn:hover{background:#222;color:#fff}
         ul{list-style:none;padding:0;margin:0}
         a{text-decoration:none;outline:none}
         .img-resp{height:auto;max-width:100%}
         .tac{text-align:center}
         .content{max-width:1200px;margin:125px auto 0;padding:0 15px}
         section:nth-of-type(2) p{font-size:1.125rem}
+        section{margin-bottom:2rem}
+        section.tac{margin-bottom:4rem}
     </style>
 
 </head>
@@ -36,7 +37,7 @@
     <header>
         <div class="tac">
             <h1>SnazzyMenu</h1>
-            <p>Responsive, lightweight, mega menu.</p>
+            <h2>Responsive, lightweight, mega menu.</h2>
         </div>
     </header>
     <!-- /header -->
@@ -298,28 +299,26 @@
                 sticky: true,
                 theme: 'dark',
                 phoneBtn: '888-888-8888',
-                // phoneLabel: '888-888-8888',
                 locationBtn: 'https://goo.gl/maps/r67upT9SLPFjGNbbA',
-                // locationLabel: '8929 S Sepulveda, Ste 400 Los Angeles, CA 90045',
                 colClasses: true,
             });
             
             // Add custom images
-            jQuery('.column-1').prepend('<img src="app/images/placeimg_400_250_tech.jpg">');
-            jQuery('.column-2').prepend('<img src="app/images/placeimg_400_250_nature.jpg">');
-            jQuery('.column-3').prepend('<img src="app/images/placeimg_400_250_arch(1).jpg">');
-            jQuery('.column-4').prepend('<img src="app/images/placeimg_400_250_tech(1).jpg">');
-            jQuery('.column-5').prepend('<img src="app/images/placeimg_400_250_tech(3).jpg">');
-            jQuery('.column-6').prepend('<img src="app/images/placeimg_400_250_tech(4).jpg">');
-            jQuery('.column-7').prepend('<img src="app/images/placeimg_400_250_nature(1).jpg">');
-            jQuery('.column-8').prepend('<img src="app/images/placeimg_400_250_nature(2).jpg">');
-            jQuery('.column-9').prepend('<img src="app/images/placeimg_400_250_nature(3).jpg">');
-            jQuery('.column-10').prepend('<img src="app/images/placeimg_400_250_nature(4).jpg">');
-            jQuery('.column-11').prepend('<img src="app/images/placeimg_400_250_tech(1).jpg">');
-            jQuery('.column-12').prepend('<img src="app/images/placeimg_400_250_nature(2).jpg">');
-            jQuery('.column-13').append('<img src="app/images/placeimg_400_250_nature(3).jpg">');
-            jQuery('.column-14').append('<img src="app/images/placeimg_400_250_nature(5).jpg">');
-            jQuery('.column-15').append('<img src="app/images/placeimg_400_250_arch(1).jpg">');
+            jQuery('.column-1').prepend('<img src="app/images/tech1.jpg">');
+            jQuery('.column-2').prepend('<img src="app/images/tech2.jpg">');
+            jQuery('.column-3').prepend('<img src="app/images/tech3.jpg">');
+            jQuery('.column-4').prepend('<img src="app/images/tech4.jpg">');
+            jQuery('.column-5').prepend('<img src="app/images/nature1.jpg">');
+            jQuery('.column-6').prepend('<img src="app/images/nature2.jpg">');
+            jQuery('.column-7').prepend('<img src="app/images/nature3.jpg">');
+            jQuery('.column-8').prepend('<img src="app/images/nature4.jpg">');
+            jQuery('.column-9').prepend('<img src="app/images/nature5.jpg">');
+            jQuery('.column-10').prepend('<img src="app/images/nature6.jpg">');
+            jQuery('.column-11').prepend('<img src="app/images/nature7.jpg">');
+            jQuery('.column-12').prepend('<img src="app/images/nature8.jpg">');
+            jQuery('.column-13').append('<img src="app/images/nature7.jpg">');
+            jQuery('.column-14').append('<img src="app/images/tech1.jpg">');
+            jQuery('.column-15').append('<img src="app/images/nature4.jpg">');
             // Add image responsive class
             jQuery('.column-title img').addClass('img-resp');
 		});
