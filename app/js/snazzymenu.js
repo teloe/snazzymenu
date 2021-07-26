@@ -6,7 +6,6 @@
  *
  * TODO: 1. menu-btn-hide class >
  *          1a. .close-overlay remove active class on window resize at breakpoint (reset)
- *       2. update README.md documentation
  */
 
 (function ($) {
