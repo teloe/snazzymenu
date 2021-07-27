@@ -4,7 +4,7 @@ $buttonHeight: 24px;
 $buttonColorDark: #fff;
 $buttonColorLight: #000;
 $lineThickness: 3px;
-$transitionSpeed: .2s;
+$transitionSpeed: .15s;
 $transitionEasing: ease-in-out;
 
 @font-face {
@@ -532,8 +532,8 @@ $transitionEasing: ease-in-out;
         }
         svg {
             fill: currentColor;
-            width: 1.5rem;
-            height: 1.5rem;
+            // width: 1.5rem;
+            // height: 1.5rem;
         }
     }
 
