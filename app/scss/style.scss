@@ -49,6 +49,8 @@ $transitionEasing: ease-in-out;
 
 // SnazzyMenu
 .snazzymenu {
+    border-top: solid 1px rgba(0,0,0,.1);
+    border-bottom: solid 1px rgba(0,0,0,.1);
     position: absolute;
     width: 100%;
     z-index: 999;
@@ -135,7 +137,7 @@ $transitionEasing: ease-in-out;
 
     // Light theme
     &.light {
-        background: rgba(255,255,255,.95);
+        background: rgba(255,255,255,.97);
         ul {
             li {
                 a {
@@ -178,7 +180,7 @@ $transitionEasing: ease-in-out;
         }
         &.desktop {
             .menu {
-                background: rgba(255,255,255,.95);
+                background: rgba(255,255,255,.97);
                 &.open {
                     > li {
                         &.active {
@@ -202,7 +204,7 @@ $transitionEasing: ease-in-out;
                     }
                 }
                 .mega-menu {
-                    background: rgba(255,255,255,.95);
+                    background: rgba(255,255,255,.97);
                 }
             }
         }
@@ -486,7 +488,7 @@ $transitionEasing: ease-in-out;
             .column-title {
                 img {
                     display: block;
-                    margin: 0 auto 1.25rem;
+                    margin: 1rem auto;
                     width: 100%;
                 }
             }
