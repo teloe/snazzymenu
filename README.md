@@ -2,7 +2,7 @@
 
 <p align="center">Responsive, lightweight, mega menu plugin written in jQuery and SCSS.</p>
 
-<p align="center">Click <a href="https://teloe.me/snazzymenu/">here</a> to see SnazzyMenu in action.</p>
+<p align="center">Click <a href="https://teloe.me/snazzymenu/">here</a> to see snazzyMenu in action.</p>
 
 <p align="center">
     <a href="https://github.com/teloe/snazzymenu/blob/main/LICENSE"><img src="https://img.shields.io/github/license/teloe/snazzymenu?style=flat-square" /></a>
@@ -46,7 +46,7 @@ Include `snazzymenu.min.js` and call `snazzyMenu()` to initialize.
 
 ## Usage
 
-SnazzyMenu is designed to work well with WordPress sites and can be implemented in other environments by following this markup in your HTML.
+snazzyMenu is designed to work well with WordPress sites and can be implemented in other environments by following this markup in your HTML.
 
 ```html
 <div class="snazzymenu">
