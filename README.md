@@ -79,28 +79,16 @@ _Example Markup_
 
 ```html
 <ul class="sub-menu mega-menu">
-    <li
-        id=""
-        class="menu-item menu-item-type-post_type menu-item-object-page column-title column-1"
-    >
+    <li id="" class="menu-item menu-item-type-post_type menu-item-object-page column-title column-1">
         <a href="">Column Title</a>
     </li>
-    <li
-        id=""
-        class="menu-item menu-item-type-post_type menu-item-object-page column-title column-2"
-    >
+    <li id="" class="menu-item menu-item-type-post_type menu-item-object-page column-title column-2">
         <a href="">Column Title</a>
     </li>
-    <li
-        id=""
-        class="menu-item menu-item-type-post_type menu-item-object-page column-title column-3"
-    >
+    <li id="" class="menu-item menu-item-type-post_type menu-item-object-page column-title column-3">
         <a href="">Column Title</a>
     </li>
-    <li
-        id=""
-        class="menu-item menu-item-type-post_type menu-item-object-page column-title column-4"
-    >
+    <li id="" class="menu-item menu-item-type-post_type menu-item-object-page column-title column-4">
         <a href="">Column Title</a>
     </li>
 </ul>
