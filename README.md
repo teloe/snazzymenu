@@ -21,7 +21,7 @@ Download/clone this repo and include the files located in the `dist` directory i
 and
 `dist/css/style.css`
 
-#### CSS
+### CSS
 
 Include `style.css`
 
@@ -29,7 +29,7 @@ Include `style.css`
 <link rel="stylesheet" href="PATH_TO/css/style.css" />
 ```
 
-#### JS
+### JS
 
 Include `snazzymenu.min.js` and call `snazzyMenu()` to initialize.
 
@@ -71,7 +71,7 @@ snazzyMenu is designed to work well with WordPress sites and can be implemented 
 </div>
 ```
 
-#### Adding custom elements inside the mega menu
+### Adding custom elements inside the mega menu
 
 You can add custom elements (images, videos, etc.) by setting the `colClasses` value to `true`. This will add unique class names to each `li` element in the order in which they appear in your markup. You will see "colomn-1", "column-2", "column-3", etc. class names for the `li` elements inside the mega menu container.
 
@@ -96,7 +96,7 @@ _Example Markup_
 
 You can then easily target those elements by class name and use jQuery `prepend()` or `append()` methods to add any element you'd like.
 
-_Example_
+\*Example
 
 ```javascript
 // Add an image before (above) the nav items
@@ -111,9 +111,9 @@ jQuery('.column-2').append(
 
 ## Options
 
-#### List of available settings
+### List of available settings
 
-_Example usage on snazzyMenu init_
+\*Example usage on snazzyMenu init
 
 ```javascript
 jQuery('.snazzymenu').snazzyMenu({
@@ -132,7 +132,7 @@ jQuery('.snazzymenu').snazzyMenu({
 });
 ```
 
-#### Reference
+### Reference
 
 | Attribute       | Type      | Default                                                                                                                                                                             | Description                                                                                                    |
 | --------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -148,42 +148,38 @@ jQuery('.snazzymenu').snazzyMenu({
 | `locationLabel` | _String_  | 'Location'                                                                                                                                                                          | Label (text) for the location button                                                                           |
 | `colClasses`    | _Boolean_ | false                                                                                                                                                                               | Adds unique class names to each list item (column) in the mega menu in the order in which they appear          |
 
-#### theme
+### theme
 
 By default, the theme for snazzyMenu is set to `'dark'`. You may change the value of this option to `'light'`. This will change the background color from black to white.
 
-#### breakpoint
+### breakpoint
 
 Define the number in pixels you would like to have snazzyMenu change from mobile to desktop version.
 
-#### menuBtn
-
-WORK IN PROGRESS - Setting this option value to `false` will remove the menu controls (logo, phone, location, and hamburger buttons) and show the top level menu items on desktop view only, making it look more like a traditional nav.
-
-#### toggleBtn
+### toggleBtn
 
 For mobile viewports, there are dropdown icons to toggle sub-menus. By default, these icons are carets. You can change this option to `'plus'` if you'd prefer these icons to be plus signs.
 
-#### homeBtn
+### homeBtn
 
 By default, a home icon svg will display on the left hand side of the menu. Add your logo or other image with the correct path to your image.
 
-#### phoneBtn
+### phoneBtn
 
 Add a phone number to your menu that users can click to call.
 
-#### phoneLabel
+### phoneLabel
 
 The default lable is 'Call'. You can include your full phone number by adding the string value.
 
-#### locationBtn
+### locationBtn
 
 Add a location link to your menu that users can click to open a new tab with your location.
 
-#### locationLabel
+### locationLabel
 
 The default lable is 'Location'. You can dislplay your full address by adding the string value.
 
-#### ColClasses
+### colClasses
 
 By default, this is set to `false`. If you set to `true`, the `li` elements will have unique class names that you can target.
