@@ -3,14 +3,9 @@ $buttonWidth: 30px;
 $buttonHeight: 24px;
 $buttonColorDark: #fff;
 $buttonColorLight: #000;
-$lineThickness: 3px;
+$lineThickness: 2px;
 $transitionSpeed: .15s;
 $transitionEasing: ease-in-out;
-
-@font-face {
-    font-family: Recursive1;
-    src: url(../fonts/RecMonoDuotone-Regular-1.078.ttf);
-}
 
 @keyframes fadeIn {
     0%{opacity:0;visibility:hidden}
