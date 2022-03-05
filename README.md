@@ -75,7 +75,7 @@ snazzyMenu is designed to work well with WordPress sites and can be implemented 
 
 You can add custom elements (images, videos, etc.) by setting the `colClasses` value to `true`. This will add unique class names to each `li` element in the order in which they appear in your markup. You will see "colomn-1", "column-2", "column-3", etc. class names for the `li` elements inside the mega menu container.
 
-_Example Markup_
+\*Example Markup
 
 ```html
 <ul class="sub-menu mega-menu">
@@ -120,7 +120,6 @@ jQuery('.snazzymenu').snazzyMenu({
     theme: 'dark', // adds default color to nav (light, dark)
     breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
     sticky: true, // makes nav sticky on scroll (desktop only)
-    menuBtn: true, // show hamburger menu button/ top level controls/ logo image (top-level menu items will be visible on click)
     toggleBtn: 'caret', // options: 'caret' or 'plus'. Make the .toggle dropdown icons either a caret or a plus sign for mobile viewports
     homeBtn:
         '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // set a custom image like a logo that routes to homepage
@@ -139,7 +138,6 @@ jQuery('.snazzymenu').snazzyMenu({
 | `theme`         | _String_  | 'dark'                                                                                                                                                                              | Adds default color to nav (light, dark)                                                                        |
 | `breakpoint`    | _Integer_ | 1024                                                                                                                                                                                | Number in pixels to determine when the nav should turn mobile friendly                                         |
 | `sticky`        | _Boolean_ | true                                                                                                                                                                                | Makes the nav sticky on scroll                                                                                 |
-| `menuBtn`       | _Boolean_ | true                                                                                                                                                                                | Show hamburger menu button/ top level controls/ logo image (top-level menu items will be visible on click)     |
 | `toggleBtn`     | _String_  | 'caret'                                                                                                                                                                             | Options: 'caret' or 'plus'. Make the .toggle dropdown icons either a caret or a plus sign for mobile viewports |
 | `homeBtn`       | _String_  | '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>' | Set a custom image like a logo that routes to homepage                                                         |
 | `phoneBtn`      | _String_  | ''                                                                                                                                                                                  | Adds a click-to-call phone link to the top of menu - i.e.: "18009084500"                                       |
