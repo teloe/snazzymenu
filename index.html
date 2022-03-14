@@ -296,10 +296,15 @@
 		jQuery(document).ready(function($) {
             // SnazzyMenu initialize
 			jQuery('.snazzymenu').snazzyMenu({
-                sticky: true,
                 theme: 'dark',
+                // breakpoint: 1024,
+                // sticky: true,
+                toggleBtn: 'caret',
+                homeBtn: '<img src="./app/images/logo1.png" alt="logo" />',
                 phoneBtn: '888-888-8888',
+                phoneLabel: 'Call',
                 locationBtn: 'https://goo.gl/maps/r67upT9SLPFjGNbbA',
+                // locationLabel: 'Location',
                 colClasses: true,
             });
             
