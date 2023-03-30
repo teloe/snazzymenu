@@ -1,207 +1,476 @@
 /**
- * snazzymenu.js
- * Responsive, lightweight, mega menu plugin
- * Copyright (c) 2021 Tom Eloe - https://teloe.me
- * Released under the MIT license
+ *
+ * SnazzyMenu.js
+ * Written by Tom Eloe
+ * https://github.com/teloe/snazzymenu
+ *
+ * MIT license
+ *
  */
 
-(function ($) {
-    $.fn.snazzyMenu = function (options, breakpoint) {
-        const nav = $(this);
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module
+        define([], factory(root));
+    } else if (typeof exports === 'object') {
+        // CommonJS
+        module.exports = factory(root);
+    } else {
+        // Browser
+        root.snazzyMenu = factory(root);
+    }
+})(
+    typeof global !== 'undefined' ? global : this.window || this.global,
+    function (root) {
+        'use strict';
 
-        // Default settings
-        const settings = $.extend(
-            {
-                theme: 'dark', // adds default color to nav (light, dark)
-                breakpoint: 1024, // number in pixels to determine when the nav should turn mobile friendly
-                sticky: true, // makes nav sticky on scroll
-                toggleBtn: 'caret', // options: 'caret' or 'plus'. Make the .toggle dropdown icons either a caret or a plus sign for mobile viewports
-                homeBtn:
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>', // add a custom logo image that routes to homepage or use default home icon
-                phoneBtn: '', // adds a click-to-call phone link to the top of menu - i.e.: "18009084500"
-                phoneLabel: 'Call', // label for the phone button
-                locationBtn: '', // adds a location link to the top of menu - i.e.: "/location/", "http://site.com/contact-us/"
-                locationLabel: 'Location', // label for the location button
-                colClasses: false, // adds unique class names to each list item (column) in the mega menu in the order in which they appear
-            },
-            options
-        );
 
-        return this.each(function () {
-            // defines dark or light themes
+        /**
+         * 
+         * Variables
+         * 
+         */
+        let settings;
+
+        const snazzyMenu = {}; // Object for public APIs
+        const supports = !!document.querySelector && !!root.addEventListener; // Feature test
+
+        const nav = document.querySelector('.snazzymenu');
+        const menu = document.querySelector('.menu');
+        const hasSub = menu.querySelectorAll('li.menu-item-has-children');
+        const subMenu = menu.querySelectorAll('.sub-menu');
+
+
+
+        /**
+         * 
+         * Default options
+         * 
+         */
+        const defaults = {
+            theme: 'dark',
+            breakpoint: 1024,
+            sticky: true,
+            toggleBtn: 'caret',
+            homeBtn: '<svg fill="currentColor" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path><path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path></svg>',
+            phoneBtn: '',
+            phoneLabel: 'Call',
+            locationBtn: '',
+            locationLabel: 'Location',
+            setColumnClasses: false,
+            setImages: [],
+            noControls: false,
+        };
+
+
+        /**
+         * 
+         * Methods
+         * 
+         */
+
+        /**
+         * A simple forEach() implementation for Arrays, Objects and NodeLists
+         * @private
+         * @param {Array|Object|NodeList} collection Collection of items to iterate
+         * @param {Function} callback Callback function for each iteration
+         * @param {Array|Object|NodeList} scope Object/NodeList/Array that forEach is iterating over (aka `this`)
+         */
+        const forEach = (collection, callback, scope) => {
+            if (
+                Object.prototype.toString.call(collection) === '[object Object]'
+            ) {
+                for (var prop in collection) {
+                    if (
+                        Object.prototype.hasOwnProperty.call(collection, prop)
+                    ) {
+                        callback.call(
+                            scope,
+                            collection[prop],
+                            prop,
+                            collection
+                        );
+                    }
+                }
+            } else {
+                for (var i = 0, len = collection.length; i < len; i++) {
+                    callback.call(scope, collection[i], i, collection);
+                }
+            }
+        };
+
+        /**
+         * Merge defaults with user options
+         * @private
+         * @param {Object} defaults Default settings
+         * @param {Object} options User options
+         * @returns {Object} Merged values of defaults and options
+         */
+        const extend = (defaults, options) => {
+            let extended = {};
+            forEach(defaults, function (value, prop) {
+                extended[prop] = defaults[prop];
+            });
+            forEach(options, function (value, prop) {
+                extended[prop] = options[prop];
+            });
+            return extended;
+        };
+
+
+
+
+        const navSetup = () => {
+
+            // Set the theme
             if (settings.theme === 'light' || settings.theme) {
-                nav.addClass(settings.theme);
+                nav.classList.add(settings.theme);
             }
 
+            // Set breakpoint
             if (settings.breakpoint) {
-                breakpoint = settings.breakpoint;
+                settings.breakpoint;
             }
 
-            // Makes nav sticky on scroll
+            // Sticky menu
             if (settings.sticky) {
-                const navPos = nav.offset().top;
-                $(window).on('scroll', function () {
-                    nav.addClass('fixed');
-                    if ($(window).scrollTop() <= navPos) {
-                        nav.removeClass('fixed');
+                let navPos = nav.offsetTop;
+                window.addEventListener('scroll', function () {
+                    nav.classList.add('fixed');
+                    if (document.scrollingElement.scrollTop <= navPos) {
+                        nav.classList.remove('fixed');
                     }
                 });
             }
 
-            if (
-                settings.toggleBtn === 'caret' ||
-                settings.toggleBtn === 'plus'
-            ) {
-                nav.find('.menu').addClass(settings.toggleBtn);
+            // Toggle button styles
+            settings.toggleBtn !== 'caret' && settings.toggleBtn !== 'plus' ? menu.classList.add('caret') : menu.classList.add(settings.toggleBtn);
+
+
+        }
+
+
+
+
+        // Add unique class to mega menu columns
+        const addColClasses = () => {
+            if (settings.setColumnClasses) {
+                
+                const colTitle = menu.querySelectorAll('.column-title');
+
+                colTitle.forEach((col, i) => {
+                    col.classList.add('column' + '-' + (i + 1));
+
+                    const a = col.querySelector('a');
+                    const img = document.createElement('img');
+                    
+                    img.src = settings.setImages[i];
+                    img.setAttribute('alt', 'Navigation image');
+
+                    if (settings.setImages[i] === '' || settings.setImages[i] === undefined) {
+                        img.style.display = 'none';
+                    }
+
+                    col.insertBefore(img, a);
+                    
+                });
+
+
+            }
+        }
+
+
+
+
+
+        // Open Menu
+        const openMenu = () => {
+            const menuBtn = document.querySelector('.menu-btn');
+            const closeOverlay = document.querySelector('.close-overlay');
+            menuBtn.addEventListener('click', function () {
+                this.classList.toggle('active');
+                menu.classList.toggle('open');
+                closeOverlay.classList.toggle('active');
+                nav.classList.toggle('scroll');
+            });
+
+        }
+        
+        
+        // Close Menu
+        const closeMenu = () => {
+            const menuBtn = document.querySelector('.menu-btn');
+            const closeOverlay = document.querySelector('.close-overlay');
+            menuBtn.classList.remove('active');
+            menu.classList.remove('open');
+
+            hasSub.forEach(li => {
+                li.classList.remove('open');
+                if (settings.noControls) {
+                    li.classList.remove('active');
+                }
+                
+            });
+
+            subMenu.forEach(sub => {
+                sub.style.height = '0px';
+            });
+                
+            closeOverlay.classList.remove('active');
+            nav.classList.remove('scroll');
+
+            closeOverlay.addEventListener('click', function() {
+                closeMenu();
+            });
+
+        }
+
+        const closeOnEsc = () => {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMenu();
+                }
+            });
+        }
+
+
+        const clickHandler = () => {
+
+            const topListItems = menu.children;
+
+            [...topListItems].forEach(li => {
+                const topLinks = li.firstElementChild;
+
+                
+                topLinks.addEventListener('click', (e) => {
+                    
+                    if (li.classList.contains('menu-item-has-children')) {
+                        e.preventDefault();
+                    }
+                    
+                    for (let sibling of e.target.parentElement.parentElement.children) {
+                        sibling.classList.remove('active');
+                        e.target.parentElement.classList.add('active');
+                    }
+
+                });
+
+
+            });
+
+
+        }
+
+
+
+
+        // Add elements
+        const addElements = () => {
+
+            const controls = document.createElement('div');
+            const closeDiv = document.createElement('div');
+            controls.innerHTML = `<div class="controls"><div class="logo"><a href="/" title="" aria-label="Home">` + settings.homeBtn + `</a></div><div class="cta"><button class="menu-btn" aria-label="Menu"></button></div></div>`;
+            nav.insertBefore(controls, menu);
+            closeDiv.classList.add('close-overlay');
+            nav.after(closeDiv);
+
+            const cta = nav.querySelector('.cta');
+            const menuBtn = nav.querySelector('.menu-btn');  
+
+            // Add click-to-call link
+            if (settings.phoneBtn) {
+                const callBtn = document.createElement('div');
+                callBtn.innerHTML = `<a href="tel:` + settings.phoneBtn + `" class="call-btn" aria-label="Call"><svg fill="currentColor" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path clip-rule="evenodd" fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"></path></svg> <span>` + settings.phoneLabel + `</span></a>`;
+                
+                cta.insertBefore(callBtn, menuBtn);
             }
 
-            if (settings.homeBtn) {
-                homeBtn = settings.homeBtn;
-            } else {
-                homeBtn = '';
+             // Add location link
+             if (settings.locationBtn) {
+                const locationBtn = document.createElement('div');
+                locationBtn.innerHTML =
+                    `<a href="` + settings.locationBtn + `" class="location-btn" target="_blank" aria-label="Location"><svg fill="currentColor" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path clip-rule="evenodd" fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"></path></svg> <span>` + settings.locationLabel + `</span></a>`;
+
+                cta.insertBefore(locationBtn, menuBtn);
             }
 
-            if (settings.phoneLabel) {
-                phoneLabel = settings.phoneLabel;
-            } else {
-                phoneLabel = '';
-            }
 
-            if (settings.locationLabel) {
-                locationLabel = settings.locationLabel;
-            } else {
-                locationLabel = '';
-            }
+            // Add toggle buttons
+            hasSub.forEach(li => {
+                const toggle = document.createElement('a');
+                toggle.classList.add('toggle');
+                toggle.setAttribute('href', '#');
+                li.appendChild(toggle);
 
-            // Load .cta/ .controls/ .close-overlay dynamically
-            nav.find('.menu').before(
-                '<div class="controls"><div class="logo"><a href="/" title="" aria-label="Home">' +
-                    homeBtn +
-                    '</a></div><div class="cta"><button class="menu-toggle" aria-label="Menu"></button></div></div>'
-            );
-            nav.after('<div class="close-overlay"></div>');
+            });
+
+
+        }
+
+
+
+        const subMenus = () => {
 
             // Add .has-sub class to li dropdowns
-            if (nav.find('li.menu-item-has-children')) {
-                $('li.menu-item-has-children').addClass('has-sub');
-            }
-
-            // Adds a location page link to the beginning of nav
-            if (settings.locationBtn) {
-                const btn =
-                    '<a href="' +
-                    settings.locationBtn +
-                    '" class="location-btn-mobile ' +
-                    '" target="_blank" aria-label="Location"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg> <span>' +
-                    locationLabel +
-                    '</span></a>';
-                nav.find('.cta').prepend(btn);
-            }
-
-            // Adds a click-to-call link
-            if (settings.phoneBtn) {
-                const btn =
-                    '<a href="tel:' +
-                    settings.phoneBtn +
-                    '" class="call-btn-mobile ' +
-                    '" aria-label="Call"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg> <span>' +
-                    phoneLabel +
-                    '</span></a>';
-                nav.find('.cta').prepend(btn);
-            }
-
-            // Open menu
-            $('.menu-toggle').on('click', function () {
-                $(this).toggleClass('active');
-                nav.find('.menu').toggleClass('open');
-                $('.close-overlay').toggleClass('active');
-                nav.toggleClass('scroll');
+            hasSub.forEach(li => {
+                li.classList.add('has-sub');
             });
 
-            // Close menu
-            function closeMenu() {
-                $('.menu-toggle').removeClass('active');
-                nav.find('.menu').removeClass('open');
-                $('.close-overlay').removeClass('active');
-                nav.removeClass('scroll');
-            }
-            closeMenu();
+            // Add .mega-menu class to top-level sub-menus
+            const topListItems = menu.children;
+            [...topListItems].forEach(li => {
 
-            $('.close-overlay').on('click', closeMenu);
-
-            $(document).keyup(function (e) {
-                if (e.keyCode === 27) {
-                    return closeMenu();
+                const childSub = li.querySelector('.sub-menu');
+                if ( li.contains(childSub) ) {
+                    childSub.classList.add('mega-menu');
                 }
+                
             });
 
-            // Hide all .sub-menus
-            nav.find('.menu .sub-menu')
-                .css({
-                    display: 'flex',
-                    'flex-direction': 'column',
-                })
-                .hide();
 
             // First main nav list item has active class
-            nav.find('.menu > li:first-child').addClass('active');
-
-            // Add .mega-menu class to first sub-menus
-            nav.find('.menu > li.has-sub > .sub-menu').addClass('mega-menu');
+            const firstListItem = menu.querySelector('li');
+            firstListItem.classList.add('active');
 
             // Add .column-title class to first li elements in mega menu
-            nav.find('.mega-menu > li').addClass('column-title');
+            const megaMenuListItems = document.querySelectorAll('.mega-menu > li');
+            megaMenuListItems.forEach(li => {
+                li.classList.add('column-title');
+            });
 
-            // Add unique class to mega menu columns
-            if (settings.colClasses) {
-                nav.find('.mega-menu .column-title').each(function (i) {
-                    $(this).addClass('column' + '-' + (i + 1));
-                });
-            }
 
-            // Top level nav item click functionality
-            nav.find('.menu > li a').on('click', function (e) {
-                if ($(this).parent().hasClass('has-sub')) {
+            // Expands dropdown menu on click
+            const toggle = menu.querySelectorAll('.toggle');
+            
+            toggle.forEach(btn => {
+                btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                }
-                $(this)
-                    .parent()
-                    .addClass('active')
-                    .siblings()
-                    .removeClass('active');
+                    e.target.closest('li').classList.toggle('open');
+
+                    let sub = e.target.previousElementSibling;
+
+                    if (sub.style.height !== '0px') {
+                        sub.style.height = '0px';
+                    } else {
+                        sub.style.height = 'auto';
+                    }
+
+                });
             });
 
-            // Adds toggle button to li items that have children
-            nav.find('li a').each(function () {
-                if ($(this).parent().hasClass('has-sub')) {
-                    $(this).parent().append('<a class="toggle" href="#"></a>');
-                }
-            });
 
-            // Expands the dropdown menu on each click
-            nav.find('li .toggle').on('click', function (e) {
-                e.preventDefault();
-                $(this).siblings('.sub-menu').slideToggle(250);
-                $(this).parent('li').toggleClass('open');
-            });
 
-            // Check window width
-            function checkWidth() {
-                const browserWidth = window.innerWidth;
+        }
 
-                if (browserWidth <= breakpoint) {
-                    nav.addClass('mobile');
-                    nav.removeClass('desktop');
-                } else {
-                    nav.removeClass('mobile');
-                    nav.addClass('desktop');
-                    nav.find('.menu .sub-menu').hide();
-                    nav.find('.has-sub').removeClass('open');
-                }
+
+
+        // Add no-controls class to snazzymenu element
+        const setNoControls = () => {
+            if (settings.noControls) {
+                nav.classList.add('no-controls');
+                hasSub.forEach(li => {
+                    li.classList.remove('active');
+                    
+                    li.addEventListener('click', () => {
+                        const closeOverlay = document.querySelector('.close-overlay');
+                        closeOverlay.classList.add('active');
+                    });
+                    
+                });
+
+                
             }
-            checkWidth();
+        }
+        
+        
 
-            $(window).on('resize', checkWidth);
-        });
-    };
-})(jQuery);
+
+        const checkWidth = () => {
+            
+            const browserWidth = window.innerWidth;
+
+            if (browserWidth < settings.breakpoint) {
+                console.log('is mobile');
+                nav.classList.add('mobile');
+                nav.classList.remove('desktop');
+
+            } else {
+                console.log('is desktop');
+                nav.classList.remove('mobile');
+                nav.classList.add('desktop');
+
+            }
+           
+        }
+
+        const windowResize = () => {
+            const mq = window.matchMedia('screen and (min-width:' + settings.breakpoint + 'px)');
+
+            mq.addEventListener('change', (e) => {
+
+                if (!e.matches || e.matches) {
+                    closeMenu();
+                    checkWidth();
+                }
+
+            });
+        }
+
+
+
+
+        /**
+         * Destroy the current initialization.
+         * @public
+         */
+        snazzyMenu.destroy = function () {
+            // If plugin isn't already initialized, stop
+            if (!settings) return;
+
+            // Reset variables
+            settings = null;
+            // eventTimeout = null;
+        };
+
+
+
+        /**
+         * Initialize Plugin
+         * @public
+         * @param {Object} options User settings
+         */
+        snazzyMenu.init = function (options) {
+            // feature test
+            if (!supports) return;
+
+            // Destroy any existing initializations
+            snazzyMenu.destroy();
+
+            // Merge user options with defaults
+            settings = extend(defaults, options || {});
+
+            
+            addElements();
+            navSetup();
+            openMenu();
+            closeMenu();
+            closeOnEsc();
+            checkWidth();
+            windowResize();
+            subMenus();
+            clickHandler();
+            addColClasses();
+            setNoControls();
+
+
+        };
+
+        /**
+         * 
+         * Public APIs
+         * 
+         */
+
+        return snazzyMenu;
+    }
+);

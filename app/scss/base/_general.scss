@@ -1,0 +1,45 @@
+.snazzymenu {
+    border-top: solid 1px rgba(0,0,0,.1);
+    border-bottom: solid 1px rgba(0,0,0,.1);
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+    ul {
+        li {
+            a {
+                display:inline-block;
+                padding: 5px;
+            }
+        }
+    }
+    .menu {
+        visibility: hidden;
+        position: absolute;
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        &.open {
+            visibility: visible;
+        }
+        > li {
+            > a {
+                padding: 1.5rem 1rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+    }
+    .column-title {
+        > a {
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: .5rem;
+        }
+    }
+    &.fixed {
+        position: fixed;
+        top: 0;
+    }
+  
+
+}

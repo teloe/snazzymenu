@@ -1,0 +1,86 @@
+.snazzymenu {
+    &.desktop {
+        .menu {
+            &.open {
+                flex-direction: row;
+                justify-content: space-evenly;
+                height: auto;
+                animation: fadeIn .1s ease;
+                animation-delay: .05s;
+                animation-fill-mode: both;
+                > li {
+                    &.active {
+                        .mega-menu {
+                            display: flex!important;
+                            flex-direction: row!important;
+                            visibility: visible;
+                            height: auto!important;
+                            .sub-menu {
+                                display: block!important;
+                                height: auto!important;
+                            }
+                            .column-title {
+                                animation: fadeIn .1s ease;
+                                animation-delay: .05s;
+                                animation-fill-mode: both;
+                            }
+                        }
+                    }
+                }
+            }
+            > li {
+                &.has-sub {
+                    > a {
+                        &::after {
+                            content: '';
+                            display:inline-block;
+                            width: 8px;
+                            height: 8px;
+                            position: relative;
+                            top: -4px;
+                            right: -.5rem;
+                            transform: rotate(45deg);
+                        }
+                    }
+                    .toggle {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .mega-menu {
+            position: absolute;
+            left:0;
+            width: 100%;
+            padding: 1rem 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            visibility: hidden;
+            > li {
+                flex: 1;
+                padding: 0 5px;
+                > a {
+                    width: 100%;
+                }
+            }
+            .column-title {
+                img {
+                    display: block;
+                    margin: 0 auto 1rem;
+                    width: 100%;
+                }
+            }
+            .sub-menu {
+                display: flex;
+                flex-direction: column;
+                li {
+                    a {
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

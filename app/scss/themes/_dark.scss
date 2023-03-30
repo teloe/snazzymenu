@@ -1,0 +1,80 @@
+.snazzymenu {
+    &.dark {
+        background: rgba(0,0,0,.95);
+        ul {
+            li {
+                a {
+                    color: #fff;
+                }
+            }
+        }
+        .menu-toggle {
+            color: #fff;
+        }
+        &.mobile {
+            .menu {
+                &.caret {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    border-right: solid 1px #fff;
+                                    border-bottom: solid 1px #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.plus {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    background: linear-gradient(#fff,#fff), linear-gradient(#fff,#fff);
+                                    background-position:center;
+                                    background-size: 50% 2px,2px 50%;
+                                    background-repeat:no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.desktop {
+            .menu {
+                background: rgba(0,0,0,.95);
+                &.open {
+                    > li {
+                        &.active {
+                            > a {
+                                color:rgba(#fff,.6);
+                                &::after {
+                                    border-color: rgba(#fff,.6);
+                                }
+                            }
+                        }
+                    }
+                }
+                > li {
+                    &.has-sub {
+                        > a {
+                            &::after {
+                                border-right: solid 1px #fff;
+                                border-bottom: solid 1px #fff;
+                            }
+                        }
+                    }
+                }
+                .mega-menu {
+                    background-color: rgba(0,0,0,.95);
+                }
+            }
+        }
+        .controls {
+            a {
+                color: #fff;
+            }
+        }
+    }
+}

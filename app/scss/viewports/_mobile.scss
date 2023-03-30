@@ -1,0 +1,141 @@
+.snazzymenu {
+    &.mobile {
+        &.scroll {
+            &.fixed {
+                overflow-y: scroll;
+            }
+            height: 100vh;
+        }
+        .mega-menu {
+            padding:0;
+            img {
+                display:none !important;
+            }
+        }
+        .sub-menu {
+            display: flex;
+            flex-direction: column;
+            height: 0;
+            overflow: hidden;            
+            li {
+                a {
+                    padding-left: 1.5rem;
+                }
+            }
+            .sub-menu {
+                li {
+                    a {
+                        padding-left: 3rem;
+                    }
+                }
+            }
+        }
+        .menu {
+            padding-top: 2rem;
+            padding-bottom: 4rem;
+            // overflow-y: scroll;
+            &.caret {
+                li {
+                    &.has-sub {
+                        .toggle {
+                            &::after {
+                                content: '';
+                                display:inline-block;
+                                width: 10px;
+                                height: 10px;
+                                right: 5px;
+                                position: relative;
+                                transform: rotate(45deg);
+                            }
+                        }
+                    }
+                    &.open {
+                        > .toggle {
+                            &::after {
+                                transform: rotate(-135deg)!important;
+                            }
+                        }
+                    }
+                }
+            }
+            &.plus {
+                li {
+                    &.has-sub {
+                        .toggle {
+                            height: 50px;
+                            &::after {
+                                content: '';
+                                display:inline-block;
+                                width: 24px;
+                                height: 24px;
+                                position: absolute;
+                                top:0;
+                                bottom:0;
+                                margin: auto;
+                                right: 15px;
+                            }
+                        }
+                    }
+                    // &.open {
+                    //     > .toggle {
+                    //         &::after {
+                    //             background-size: 50% 2px!important;
+                    //         }
+                    //     }
+                    // }
+                }
+            }
+        }
+        ul {
+            li {
+                &.has-sub {
+                    position: relative;
+                    .toggle {
+                        position: absolute;
+                        width: 40px;
+                        top: 0;
+                        right: 0;
+                        margin-bottom: 0;
+                        width: 100%;
+                        text-align: right;
+                    }
+                }
+                &.open {
+                    > a {
+                        text-decoration: underline;
+                        font-weight: 700;
+                    }
+                    > .toggle {
+                        &::after {
+                            background-size: 50% 2px!important;
+                        }
+                    }
+                    li {
+
+                        &.open {
+                            > a {
+                                text-decoration: none;
+                            }
+
+                        }
+                    }
+
+                }
+                &.column-title {
+                    > a {
+                        font-weight: normal;
+                    }
+                }
+                a {
+                    padding: 15px;
+                    text-align: left;
+                }
+            }
+        }
+        .cta {
+            span {
+                display:none;
+            }
+        }
+    }
+}

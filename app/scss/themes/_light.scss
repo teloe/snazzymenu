@@ -1,0 +1,80 @@
+.snazzymenu {
+    &.light {
+        background: rgba(255,255,255,.97);
+        ul {
+            li {
+                a {
+                    color: #000;
+                }
+            }
+        }
+        .menu-btn {
+            color: #000;
+        }
+        &.mobile {
+            .menu {
+                &.caret {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    border-right: solid 1px #000;
+                                    border-bottom: solid 1px #000;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.plus {
+                    li {
+                        &.has-sub {
+                            .toggle {
+                                &::after {
+                                    background: linear-gradient(#000,#000), linear-gradient(#000,#000);
+                                    background-position:center;
+                                    background-size: 50% 2px,2px 50%;
+                                    background-repeat:no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.desktop {
+            .menu {
+                background: rgba(255,255,255,.97);
+                &.open {
+                    > li {
+                        &.active {
+                            > a {
+                                color:rgba(#000,.6);
+                                &::after {
+                                    border-color: rgba(#000,.6);
+                                }
+                            }
+                        }
+                    }
+                }
+                > li {
+                    &.has-sub {
+                        > a {
+                            &::after {
+                                border-right: solid 1px #000;
+                                border-bottom: solid 1px #000;
+                            }
+                        }
+                    }
+                }
+                .mega-menu {
+                    background: rgba(255,255,255,.97);
+                }
+            }
+        }
+        .controls {
+            a {
+                color: #000;
+            }
+        }
+    }
+}

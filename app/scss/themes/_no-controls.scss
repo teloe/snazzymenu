@@ -1,0 +1,34 @@
+.snazzymenu {
+    &.desktop {
+        &.no-controls {
+            .controls {
+                display: none;
+            }
+            .menu {
+                visibility: visible;
+                flex-direction: row;
+                justify-content: space-around;
+                > li {
+                    > a {
+                        padding: 1rem;
+                    }
+                }
+                .menu-item-has-children {
+                    
+                    &.active {
+                        .sub-menu {
+                            visibility: visible;
+                            height: auto!important;
+                        }
+                        .column-title {
+                            animation: fadeIn .1s ease;
+                            animation-delay: .05s;
+                            animation-fill-mode: both;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}

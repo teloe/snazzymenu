@@ -14,20 +14,20 @@ const browserSync = require('browser-sync').create();
 // Compile scss into css/ add vendor prefixes/ compress css
 function style() {
     return gulp
-        .src('./scss/**/*.scss')
+        .src('app/scss/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .on('error', sass.logError)
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./css'))
+        .pipe(gulp.dest('dist/css'))
         .pipe(browserSync.stream());
 }
 
 // Minify images
 function images() {
     return gulp
-        .src('./images/*')
+        .src('app/images/*')
         .pipe(
             imagemin([
                 imagemin.gifsicle({ interlaced: true }),
@@ -46,9 +46,9 @@ function watch() {
             index: 'index.html',
         },
     });
-    gulp.watch('./scss/**/*.scss', style);
+    gulp.watch('app/scss/**/*.scss', style);
     gulp.watch('./*.html').on('change', browserSync.reload);
-    gulp.watch('./js/**/*.js').on('change', browserSync.reload);
+    gulp.watch('app/js/**/*.js').on('change', browserSync.reload);
 }
 
 // Export tasks
