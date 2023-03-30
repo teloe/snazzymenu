@@ -56,6 +56,7 @@ snazzyMenu.init(options);
                 <li><a href="">Column Title</a></li>
             </ul>
         </li>
+        <li><a href="">Link to page</a></li>
     </ul>
 </div>
 ```
