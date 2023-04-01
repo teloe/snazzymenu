@@ -163,4 +163,4 @@ will output the following markup:
     </li>
 </ul>
 ```
-
+Note: images are only visible on desktop viewports.
