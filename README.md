@@ -96,3 +96,71 @@ const options = {
 | `setColumnClasses` | `boolean` | false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Set unique column class names to each `li.column-title` element in mega menu. This will set class name of `li.column-[i]` in the order in which they appear.                                                                                                              |
 | `setImages`        | `array`   | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `setColumnClasses` must be `true`. Set the path to images that will show above each `li.column-title` in the order in which they appear. Example: [ '`path-to-img1.jpg`', '`path-to-image2.jpg`', etc. ]. This will display images above `li.column-1` and `li.column-2`. |
 | `noControls`       | `boolean` | false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Removes the top `.controls` element and shows top-level menu items on desktop viewports only. Set to `true` will remove hamburger menu, call button, location button, and homepage logo/button.                                                                           |
+
+
+### Adding images to mega menu columns
+To show images above each mega menu column, set `setColumnClasses` to `true`. This will add unique class names to each `li.column-title` element inside the mega menu. The markup will look something like this:
+
+```html
+<ul class="sub-menu mega-menu">
+    <li class="menu-item-has-children has-sub column-title column-1">
+        <a href="">Column 1</a>
+        <ul class="sub-menu">
+            <!-- sub-menu items -->
+        </ul>
+    </li>
+    <li class="menu-item-has-children has-sub column-title column-2">
+        <a href="">Column 2</a>
+        <ul class="sub-menu">
+            <!-- sub-menu items -->
+        </ul>
+    </li>
+    <li class="menu-item-has-children has-sub column-title column-3">
+        <a href="">Column 3</a>
+        <ul class="sub-menu">
+            <!-- sub-menu items -->
+        </ul>
+    </li>
+</ul>
+```
+
+The next step is to add the paths to each image in the `setImages` array. This will add an image in the order of each `li.column-title` element. For example: 
+
+```js
+const options = {
+    setColumnClasses: true,
+    setImages: [
+        'path-to-img1.jpg',
+        'path-to-img2.jpg',
+        'path-to-img3.jpg',
+    ],
+};
+```
+will output the following markup:
+
+```html
+<ul class="sub-menu mega-menu">
+    <li class="menu-item-has-children has-sub column-title column-1">
+        <img src="path-to-img1.jpg" alt="Navigation image" />
+        <a href="">Column 1</a>
+        <ul class="sub-menu">
+            <!-- sub-menu items -->
+        </ul>
+    </li>
+    <li class="menu-item-has-children has-sub column-title column-2">
+        <img src="path-to-img2.jpg" alt="Navigation image" />
+        <a href="">Column 2</a>
+        <ul class="sub-menu">
+            <!-- sub-menu items -->
+        </ul>
+    </li>
+    <li class="menu-item-has-children has-sub column-title column-3">
+        <img src="path-to-img3.jpg" alt="Navigation image" />
+        <a href="">Column 3</a>
+        <ul class="sub-menu">
+            <!-- sub-menu items -->
+        </ul>
+    </li>
+</ul>
+```
+
