@@ -1,28 +1,37 @@
 {
-    "name": "snazzymenu",
-    "version": "1.0.0",
-    "description": "Responsive, lightweight, mega menu",
-    "main": "gulpfile.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Tom Eloe",
-    "license": "MIT",
-    "browserslist": [
-        "last 2 versions"
-    ],
-    "devDependencies": {
-        "autoprefixer": "^10.4.2",
-        "browser-sync": "^2.27.7",
-        "cssnano": "^5.0.17",
-        "eslint": "^8.9.0",
-        "gulp": "^4.0.2",
-        "gulp-imagemin": "^7.1.0",
-        "gulp-postcss": "^9.0.1",
-        "gulp-sass": "^5.1.0",
-        "gulp-sourcemaps": "^3.0.0",
-        "postcss": "^8.4.6",
-        "prettier": "2.7.1",
-        "sass": "^1.49.8"
-    }
+  "name": "snazzymenu",
+  "version": "1.0.0",
+  "description": "Responsive, lightweight, mega menu",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Eloe",
+  "license": "MIT",
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "keywords": [
+    "nav",
+    "navigation",
+    "menu",
+    "mega-menu",
+    "js",
+    "javascript",
+    "vanilla"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.7",
+    "cssnano": "^5.0.17",
+    "eslint": "^8.9.0",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.4.6",
+    "prettier": "2.7.1",
+    "sass": "^1.49.8"
+  }
 }
