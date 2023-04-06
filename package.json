@@ -1,13 +1,13 @@
 {
-    "name": "mega-menu-plugin",
+    "name": "snazzymenu",
     "version": "1.0.0",
-    "description": "",
+    "description": "Responsive, lightweight, mega menu",
     "main": "gulpfile.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "",
-    "license": "ISC",
+    "author": "Tom Eloe",
+    "license": "MIT",
     "browserslist": [
         "last 2 versions"
     ],
