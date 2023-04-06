@@ -31,23 +31,26 @@
         .intro{margin-bottom:4rem}
         .intro h2{margin-top:1.5rem}
         img{max-width:100%;height:auto;margin:0 auto}
-        .bg{position:relative;z-index:1;margin:0 auto 3rem}
+        .bg{display:inline-block;position:relative;z-index:1;margin:0 auto 3rem;text-align:center}
         .bg::before{content:'';position:absolute;top:1rem;left:1rem;right:0;margin:auto;height:100%;width:100%;background:rgba(79,192,141,0.5);z-index:-1}
         section .row{display:flex;align-items:center}
         section:nth-child(even) .row{flex-direction:column}
         section:nth-child(odd) .row{flex-direction:column-reverse}
-        .col{padding:0 1.5rem}
-        .snippet{box-shadow:12px 5px 18px rgba(0,0,0,.4);margin-top:2rem}
+        .col{text-align:center;width:100%;padding:0 1.5rem}
         #copyright{margin: 4rem 0;font-size:1rem;text-align:center}
         @media screen and (min-width: 768px) {
             header h1{font-size:2.75rem}
             h2{font-size:1.75rem}
             .intro p{font-size:1.25rem}
             section .row{flex-direction:row!important}
-            .col{width:50%}
-            .bg{margin:0 auto}
+            .col{text-align:left}
+            .col-md-30{width:30%}
+            .col-md-40{width:40%}
+            .col-md-50{width:50%}
+            .col-md-60{width:60%}
+            .col-md-70{width:70%}
+            .bg{display:block;margin:0 auto}
             section h3{font-size:1.25rem}
-            section p{font-size:1.125rem}
         }
     </style>
 
@@ -252,37 +255,33 @@
             <a class="github-button" href="https://github.com/teloe/snazzymenu" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star teloe/snazzymenu on GitHub">Star</a>
             <a class="github-button" href="https://github.com/teloe/snazzymenu/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork teloe/snazzymenu on GitHub">Fork</a>
 
-
-
             <h2>Resize browser width to see how SnazzyMenu behaves on mobile/desktop</h2>
         </div>
 
 
         <section>
             <div class="row">
-                <div class="col">
+                <div class="col col-md-30">
                     <div class="bg">
-                        <img src="./app/images/nature3.jpg" alt="Nature">
+                        <img class="snippet" src="./app/images/carbon1.png" alt="Code snippet" width="295" height="191">
                     </div>
                 </div>
-                <div class="col">
+                <div class="col col-md-70">
                     <h3>Scroll down to see sticky SnazzyMenu in action!</h3>
                     <p>SnazzyMenu is sticky by default. Set option sticky: false to disable sticky behavior on mobile/desktop.</p>
-                    <img class="snippet" src="./app/images/carbon1.png" alt="Code snippet" width="295" height="191">
                 </div>
             </div>
         </section>
 
         <section>
             <div class="row">
-                <div class="col">
+                <div class="col text">
                     <h3>Use a custom logo image as the home button.</h3>
                     <p>SnazzyMenu uses a home icon by default. Change this by setting option homeBtn to the path of your company logo.</p>
-                    <img class="snippet" src="./app/images/carbon2.png" alt="Code snippet" width="537" height="140">
                 </div>
                 <div class="col">
                     <div class="bg">
-                        <img src="./app/images/nature4.jpg" alt="Nature">
+                        <img class="snippet" src="./app/images/carbon2.png" alt="Code snippet" width="537" height="140">
                     </div>
                 </div>
             </div>
@@ -290,29 +289,27 @@
 
         <section>
             <div class="row">
-                <div class="col">
+                <div class="col col-md-30">
                     <div class="bg">
-                        <img src="./app/images/nature6.jpg" alt="Nature">
+                        <img class="snippet" src="./app/images/carbon3.png" alt="Code snippet" width="295" height="191">
                     </div>
                 </div>
-                <div class="col">
+                <div class="col col-md-70">
                     <h3>Light or dark theme!</h3>
                     <p>Dark theme is set by default. Set theme: light if you want SnazzyMenu to have a light theme.</p>
-                    <img class="snippet" src="./app/images/carbon3.png" alt="Code snippet" width="295" height="191">
                 </div>
             </div>
         </section>
 
         <section>
             <div class="row">
-                <div class="col">
+                <div class="col col-md-70">
                     <h3>Opt for a more traditional looking nav.</h3>
-                    <p>Don't want a hamburger menu🍔? No problem! Set option noControls: true if you want the top level nav items to show instead of the control buttons (hamburger menu, call button, location button). This only applies to desktop viewports.</p>
-                    <img class="snippet" src="./app/images/carbon4.png" alt="Code snippet" width="295" height="191">
+                    <p>🚫🍔 Don't want a hamburger menu? No problem! Set option noControls: true if you want the top level nav items to show instead of the control buttons (hamburger menu, call button, location button). This only applies to desktop viewports.</p>
                 </div>
-                <div class="col">
+                <div class="col col-md-30">
                     <div class="bg">
-                        <img src="./app/images/nature7.jpg" alt="Nature">
+                        <img class="snippet" src="./app/images/carbon4.png" alt="Code snippet" width="295" height="191">
                     </div>
                 </div>
             </div>
@@ -325,8 +322,8 @@
     </div>
 
 
-    <script type="text/javascript" src="app/js/snazzymenu.js"></script>
-    <!-- <script type="text/javascript" src="dist/js/snazzymenu.min.js"></script> -->
+    <!-- <script type="text/javascript" src="app/js/snazzymenu.js"></script> -->
+    <script type="text/javascript" src="dist/js/snazzymenu.min.js"></script>
     <script type="text/javascript">
         const options = {
             // theme: 'light',
