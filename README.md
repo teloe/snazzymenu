@@ -4,7 +4,7 @@ Responsive, lightweight, mega menu
 
 <a href="https://github.com/teloe/snazzymenu/blob/main/LICENSE"><img src="https://img.shields.io/github/license/teloe/snazzymenu?style=for-the-badge" /></a>
 
-[Demo](https://teloe.me/snazzymenu/)
+[Demo](https://teloe.github.io/snazzymenu/)
 
 ## ⚡️  Features
 
